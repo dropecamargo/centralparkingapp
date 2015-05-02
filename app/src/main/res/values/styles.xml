@@ -1,0 +1,11 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppMainTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/AppMainBarTheme</item>
+    </style>
+
+    <style name="AppMainBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/gray</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+</resources>

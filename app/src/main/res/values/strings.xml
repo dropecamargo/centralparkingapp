@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">centralparking</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="parking">Parqueaderos</string>
+    <string name="map">Mapa</string>
+    <string name="your_vehicle">Ubica tu vehiculo</string>
+    <string name="favorites">Favoritos</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
