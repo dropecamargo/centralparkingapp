@@ -8,4 +8,14 @@
     <string name="your_vehicle">Ubica tu vehiculo</string>
     <string name="favorites">Favoritos</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="msg_progress">Procesando, Espere unos segundos&#8230;</string>
+
+    <string name="exception_gps">No se puede conectar a los servicios de Google Play</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_parking">ParkingActivity</string>
+
+    <string name="activity_parking_address">Dirección:</string>
+    <string name="activity_parking_schedule">Horario de atención:</string>
+    <string name="activity_parking_capacity">Capacidad total:</string>
 </resources>

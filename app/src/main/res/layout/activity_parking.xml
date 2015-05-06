@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.koiti.centralparking.ParkingActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/blue_dark"
+        android:padding="@dimen/activity_parking_padding">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/list_row_selector">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/image_logo"
+                android:src="@drawable/common_signin_btn_icon_dark"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/image"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/aeropuerto"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"/>
+
+        <!-- address -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_address"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- schedule -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_schedule"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- capacity -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_capacity"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/capacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

@@ -4,4 +4,26 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="activity_main_padding_margin">50dp</dimen>
+    <dimen name="activity_main_width_button">170dp</dimen>
+    <dimen name="activity_main_padding_button">5dp</dimen>
+    <dimen name="activity_main_margin_button">2dp</dimen>
+
+    <dimen name="activity_list_margin">10dp</dimen>
+
+    <dimen name="activity_parking_min_height">40dp</dimen>
+    <dimen name="activity_parking_padding">10dp</dimen>
+
+    <dimen name="none">0dp</dimen>
+
+    <dimen name="marker_title_size">50dp</dimen>
+    <dimen name="title_size_text">20dp</dimen>
+    <dimen name="padding_info_map">5dp</dimen>
+    <dimen name="button_search_width">300dp</dimen>
+    <dimen name="button_border">2dp</dimen>
+
+    <dimen name="avatar_size">60dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_medium">14sp</dimen>
+    <dimen name="font_large">18sp</dimen>
 </resources>

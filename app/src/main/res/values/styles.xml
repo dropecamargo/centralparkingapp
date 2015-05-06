@@ -8,4 +8,36 @@
         <item name="android:background">@color/gray</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
+
+    <style name="button_main_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/activity_main_width_button</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_marginRight">@dimen/none</item>
+        <item name="android:layout_marginTop">@dimen/activity_main_margin_button</item>
+        <item name="android:layout_marginBottom">@dimen/activity_main_margin_button</item>
+
+        <!--<item name="android:textColor">@color/white</item>-->
+        <item name="android:textStyle">normal</item>
+
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <!--<item name="android:shadowRadius" >2</item>-->
+    </style>
+
+    <style name="item_parking_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/activity_parking_min_height</item>
+        <item name="android:paddingLeft">@dimen/activity_parking_padding</item>
+    </style>
+
+    <style name="item_parking_title_style">
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>
