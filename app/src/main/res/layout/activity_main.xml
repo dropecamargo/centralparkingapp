@@ -21,30 +21,32 @@
             android:layout_weight="1"/>
 
         <Button
-            android:text="@string/parking"
+            android:text="@string/title_activity_list"
             android:id="@+id/button_parking"
             android:onClick="viewList"
             android:background="@drawable/button_main_selector"
             style="@style/button_main_style"/>
 
         <Button
-            android:text="@string/map"
+            android:text="@string/title_activity_map"
             android:id="@+id/button_map"
             android:onClick="viewMap"
             android:background="@drawable/button_main_selector"
             style="@style/button_main_style"/>
 
         <Button
-            android:text="@string/your_vehicle"
+            android:text="@string/title_activity_photo"
             android:id="@+id/button_list"
+            android:onClick="viewPhoto"
             android:background="@drawable/button_main_selector"
             style="@style/button_main_style" />
 
-        <Button
-            android:text="@string/favorites"
-            android:id="@+id/button_favorites"
-            android:background="@drawable/button_main_selector"
-            style="@style/button_main_style" />
+        <!--<Button-->
+            <!--android:text="@string/title_activity_fav"-->
+            <!--android:id="@+id/button_favorites"-->
+            <!--android:onClick="viewFavorites"-->
+            <!--android:background="@drawable/button_main_selector"-->
+            <!--style="@style/button_main_style" />-->
     </LinearLayout>
 
 </RelativeLayout>

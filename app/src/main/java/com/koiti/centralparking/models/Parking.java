@@ -10,6 +10,7 @@ public class Parking {
 
     private String id;
     private String name;
+    private String image;
     private String address;
     private String phone;
     private int capacity;
@@ -32,6 +33,14 @@ public class Parking {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getAddress() {
@@ -97,6 +106,7 @@ public class Parking {
             jsonObject.put("name", getName());
             jsonObject.put("address", getAddress());
             jsonObject.put("phone", getPhone());
+            jsonObject.put("image", getImage());
             jsonObject.put("schedule", getSchedule());
             jsonObject.put("capacity", getCapacity());
             jsonObject.put("availability", getAvailability());

@@ -1,11 +1,16 @@
 package com.koiti.centralparking;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.koiti.centralparking.adapters.ParkingAdapter;
 import com.koiti.centralparking.models.Parking;
@@ -24,7 +29,18 @@ public class ListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         listView = (ListView) findViewById(R.id.list_parking);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Parking parking = (Parking) listView.getItemAtPosition(position);
+                Intent intent = new Intent(ListActivity.this, ParkingActivity.class);
+                intent.putExtra("PARKING", parking.toJSON());
+                startActivity(intent);
+            }
+        });
 
         // call AsynTask to perform network operation on separate thread
         new parkingSearchTask().execute();
@@ -43,13 +59,12 @@ public class ListActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

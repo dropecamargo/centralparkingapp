@@ -7,5 +7,9 @@
 
     <color name="gray">#BBB7B7</color>
     <color name="gray_dark">#D8D8D8</color>
+
+    <color name="selector_checked">#244977</color>
+    <color name="selector_unchecked">#706E6E6E</color>
+    <color name="selector_unchecked_border">#D8D8D8</color>
 </resources>
 

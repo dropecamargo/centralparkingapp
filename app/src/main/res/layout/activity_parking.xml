@@ -1,10 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.koiti.centralparking.ParkingActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/blue_dark"
         android:padding="@dimen/activity_parking_padding">
@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:id="@+id/image_logo"
-                android:src="@drawable/common_signin_btn_icon_dark"/>
+                android:src="@drawable/icon_central"/>
 
             <TextView
                 android:id="@+id/name"
@@ -36,7 +36,6 @@
             android:id="@+id/image"
             android:layout_alignParentTop="true"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/aeropuerto"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"/>
 
@@ -103,5 +102,109 @@
                 android:gravity="center_vertical"/>
         </LinearLayout>
 
+        <!-- availability -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_availability"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/availability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- rates -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_rates"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/rates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- information -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/white"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_information"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- agreement -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_agreement"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/agreement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!-- monthly -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/gray_dark"
+            style="@style/item_parking_style">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_parking_monthly"
+                style="@style/item_parking_title_style"/>
+
+            <TextView
+                android:paddingLeft="@dimen/activity_parking_padding"
+                android:id="@+id/monthly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_large"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>

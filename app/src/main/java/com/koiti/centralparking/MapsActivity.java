@@ -1,22 +1,22 @@
 package com.koiti.centralparking;
 
-import android.app.Dialog;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -25,9 +25,6 @@ import com.koiti.centralparking.models.Parking;
 import com.koiti.centralparking.rest.ParkingController;
 import com.koiti.centralparking.utils.ConstantsUtils;
 import com.koiti.centralparking.utils.ParkingProgressDialog;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -42,6 +39,16 @@ public class MapsActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Get LocationManager object from System Service LOCATION_SERVICE
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            // Enable GPS
+            disabledGPSAlert();
+        }
+
         setUpMapIfNeeded();
 
         if (googlePlayServices()) {
@@ -50,9 +57,6 @@ public class MapsActivity extends FragmentActivity {
 
             // Enable current location
             mMap.setMyLocationEnabled(true);
-
-            // Get LocationManager object from System Service LOCATION_SERVICE
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
             // Get Current Location
             Criteria criteria = new Criteria();
@@ -70,10 +74,10 @@ public class MapsActivity extends FragmentActivity {
             mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(final Marker marker) {
-                    Intent intent = new Intent(MapsActivity.this, ParkingActivity.class);
-                    intent.putExtra("PARKING", marker.getSnippet());
-                    startActivity(intent);
-                    return true;
+                Intent intent = new Intent(MapsActivity.this, ParkingActivity.class);
+                intent.putExtra("PARKING", marker.getSnippet());
+                startActivity(intent);
+                return true;
                 }
             });
 
@@ -137,6 +141,40 @@ public class MapsActivity extends FragmentActivity {
                 mMap.addMarker(markerOptions);
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void disabledGPSAlert(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MapsActivity.this);
+        alertDialog.setTitle(R.string.action_gps_title);
+        alertDialog.setMessage(R.string.action_gps_message);
+        alertDialog.setPositiveButton(R.string.config, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent callGPSSettingIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(callGPSSettingIntent);
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alertDialog.show();
     }
 
     private class parkingSearchTask extends AsyncTask<Object, Void, ArrayList<Parking>> {

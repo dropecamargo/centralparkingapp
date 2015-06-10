@@ -1,21 +1,58 @@
 <resources>
-    <string name="app_name">centralparking</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="parking">Parqueaderos</string>
-    <string name="map">Mapa</string>
-    <string name="your_vehicle">Ubica tu vehiculo</string>
-    <string name="favorites">Favoritos</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">CentralParking</string>
+    \<string name="cancel">Cancelar</string>
+    <string name="quit">Cerrar</string>
+    <string name="config">Configuración</string>
 
     <string name="msg_progress">Procesando, Espere unos segundos&#8230;</string>
-
     <string name="exception_gps">No se puede conectar a los servicios de Google Play</string>
-    <string name="title_activity_list">ListActivity</string>
-    <string name="title_activity_parking">ParkingActivity</string>
+
+    <string name="title_activity_map">Mapa</string>
+    <string name="title_activity_list">Parqueaderos</string>
+    <string name="title_activity_fav">Favoritos</string>
+    <string name="title_activity_photo">Ubica tu vehiculo</string>
+    <string name="title_activity_parking">Parqueadero</string>
+    <string name="title_activity_route">Como llegar</string>
+
+    <string name="action_gps_title">Geolocalización desactivada</string>
+    <string name="action_gps_message">Central Parking necesita acceso a tu ubicación. Activa los servicios de geolocalización.</string>
+
+    <string name="action_quit_title">Cerrar Central Parking</string>
+    <string name="action_quit_message">¿Quieres salir de la aplicación?</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_route">Como llegar</string>
+
+    <string name="action_call">LLamar</string>
+    <string name="action_call_no_phone">No existe numero de teléfono para este parqueadero.</string>
+
+    <string name="action_photo">Tomar Foto</string>
+
+    <string name="action_route_alert">Verifica las normas de transito de tu ciudad.</string>
+
+    <!-- Camera -->
+    <string name="msg_camera_error_file">Se produjo un error al crear el archivo.</string>
 
     <string name="activity_parking_address">Dirección:</string>
     <string name="activity_parking_schedule">Horario de atención:</string>
     <string name="activity_parking_capacity">Capacidad total:</string>
+    <string name="activity_parking_rates">Tarifas:</string>
+    <string name="activity_parking_information">Información:</string>
+    <string name="activity_parking_availability">Cupos disponibles:</string>
+    <string name="activity_parking_agreement">Convenio:</string>
+    <string name="activity_parking_monthly">Mensualidades:</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_gallery_detail">GalleryDetailActivity</string>
+
+    <!-- Image -->
+    <string name="desc_image">Image original</string>
+    <string name="msg_image_could_decoded">Los datos de la imagen no pueden ser decodificados, por favor vuelva a intentarlo.</string>
+
+    <!-- Detail Gallery -->
+    <string name="action_delete_image">Eliminar imagenes</string>
+    <string name="action_select_image">Seleccionar todas</string>
+
+    <!-- Exception -->
+    <string name="null_pointer_exception">Ups&#8230; Al parecer ocurrio un error, por favor vuelva a intentarlo.</string>
 </resources>

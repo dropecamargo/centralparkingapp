@@ -52,6 +52,7 @@ public class ParkingController {
                 Parking parking = new Parking();
                 parking.setId(jsonObject.getString("parq_id"));
                 parking.setName(jsonObject.getString("parq_nombre"));
+                parking.setImage(jsonObject.getString("parq_imagen"));
                 parking.setAddress(jsonObject.getString("parq_direccion"));
                 parking.setPhone(jsonObject.getString("parq_telefono"));
                 parking.setAvailability(jsonObject.getInt("parq_cuposd"));
