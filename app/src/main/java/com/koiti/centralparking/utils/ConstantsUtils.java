@@ -14,4 +14,8 @@ public class ConstantsUtils {
     public static final String URL_GET_PARKING = URL_ROOT_PARKING_API + "parking";
 
     public static final  String GALLERY_NAME = "CentralParking";
+
+    public static final Double BOGOTA_LATITUDE = 4.60971;
+
+    public static final Double BOGOTA_LONGITUDE = -74.08175;
 }

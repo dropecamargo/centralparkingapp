@@ -21,7 +21,7 @@ public class PhotoActivity extends FragmentActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.detail_gallery_content, gallery_detail_fragment).commit();
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

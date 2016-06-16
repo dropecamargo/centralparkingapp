@@ -1,12 +1,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.koiti.centralparking.ListActivity">
+    android:layout_height="match_parent" tools:context="com.koiti.centralparking.ListActivity"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/blue_dark">
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <!--<LinearLayout-->
             <!--android:layout_width="fill_parent"-->
@@ -26,19 +31,25 @@
                 <!--android:layout_gravity="center_horizontal|center_vertical" />-->
         <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="@dimen/activity_list_margin">
+        <!--<LinearLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_margin="@dimen/activity_list_margin">-->
 
-            <ListView android:id="@+id/list_parking"
+            <android.support.v7.widget.RecyclerView
+                android:scrollbars="vertical"
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:choiceMode="singleChoice"
-                android:divider="@null"
-                android:dividerHeight="@dimen/none"/>
-        </LinearLayout>
+                android:layout_height="match_parent"/>
+
+            <!--<ListView android:id="@+id/list_parking"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:choiceMode="singleChoice"-->
+                <!--android:divider="@null"-->
+                <!--android:dividerHeight="@dimen/none"/>-->
+        <!--</LinearLayout>-->
     </LinearLayout>
 
 </RelativeLayout>

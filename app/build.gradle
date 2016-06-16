@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 14
+    compileSdkVersion 21
     buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.koiti.centralparking"
         minSdkVersion 14
-        targetSdkVersion 14
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 21
+        versionCode 7
+        versionName "1.3"
     }
     buildTypes {
         release {
@@ -22,5 +22,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.gms:play-services:7.3.0'
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:recyclerview-v7:21.0.0'
+    compile 'com.getbase:floatingactionbutton:1.2.1'
+    compile 'de.hdodenhof:circleimageview:1.2.1'
+
 }

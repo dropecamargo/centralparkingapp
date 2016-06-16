@@ -11,5 +11,12 @@
     <color name="selector_checked">#244977</color>
     <color name="selector_unchecked">#706E6E6E</color>
     <color name="selector_unchecked_border">#D8D8D8</color>
+
+    <!-- Material design -->
+    <color name="primary">#1A237E</color>
+    <color name="primary_dark">#3949AB</color>
+    <color name="accent">#448AFF</color>
+
+    <color name="text">#424242</color>
 </resources>
 

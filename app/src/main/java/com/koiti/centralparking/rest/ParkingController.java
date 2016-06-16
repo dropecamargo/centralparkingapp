@@ -58,6 +58,11 @@ public class ParkingController {
                 parking.setAvailability(jsonObject.getInt("parq_cuposd"));
                 parking.setCapacity(jsonObject.getInt("parq_cupost"));
                 parking.setSchedule(jsonObject.getString("parq_horario"));
+                parking.setRates(jsonObject.getString("parq_tarifas"));
+                parking.setAgreement(jsonObject.getString("parq_convenio"));
+                parking.setMonthly(jsonObject.getString("parq_mensualidades"));
+                parking.setEmail(jsonObject.getString("parq_email"));
+
                 parking.setLatitude(jsonObject.getDouble("parq_latitud"));
                 parking.setLongitude(jsonObject.getDouble("parq_longitud"));
                 data.add(i, parking);

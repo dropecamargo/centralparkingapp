@@ -8,20 +8,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.StringTokenizer;
 
 
-public class ParkingActivity extends Activity {
+public class ParkingActivity extends ActionBarActivity {
 
     private JSONObject parking;
     private String jsonParking;
@@ -32,18 +38,24 @@ public class ParkingActivity extends Activity {
     public ImageView image;
     public TextView address;
     public TextView schedule;
+    public TextView capacity;
+    public TextView availability;
+    public TextView rates;
+    public TextView agreement;
+    public TextView monthly;
+    public TextView information;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking);
 
+        setToolbar();
+
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         jsonParking = intent.getStringExtra("PARKING");
@@ -58,11 +70,10 @@ public class ParkingActivity extends Activity {
             image = (ImageView) findViewById(R.id.image);
             String url = parking.getString("image");
             if(url != null && !url.equals("")) {
-//                try {
-                    URL newurl = new URL(parking.getString("image"));
-                    Bitmap mImage = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-                    image.setImageBitmap(mImage);
-//                }catch (Exception e){ }
+                Picasso.with(this).load(url.trim())
+                    .placeholder(R.drawable.melbourne_central)
+                    .error(R.drawable.melbourne_central)
+                    .into(image);
             }
 
             address = (TextView) findViewById(R.id.address);
@@ -73,6 +84,26 @@ public class ParkingActivity extends Activity {
 
             phone = parking.getString("phone");
 
+            capacity = (TextView) findViewById(R.id.capacity);
+            capacity.setText(parking.getString("capacity"));
+
+            availability = (TextView) findViewById(R.id.availability);
+            availability.setText(parking.getString("availability"));
+
+            information = (TextView) findViewById(R.id.information);
+            StringBuffer info = new StringBuffer();
+            info.append("Email: ").append(parking.getString("email")).append("\n");
+            info.append("Teléfono: ").append(phone);
+            information.setText(info.toString());
+
+            rates = (TextView) findViewById(R.id.rates);
+            rates.setText(parking.getString("rates"));
+
+            agreement = (TextView) findViewById(R.id.agreement);
+            agreement.setText( parking.getString("agreement").equals("1") ? "SI" : "NO" );
+
+            monthly = (TextView) findViewById(R.id.monthly);
+            monthly.setText( parking.getString("monthly").equals("1") ? "SI" : "NO" );
         } catch (JSONException e) {
             Log.e(TAG, "JSONObject parking error: " + Log.getStackTraceString(e));
         } catch (Exception e) {
@@ -80,6 +111,21 @@ public class ParkingActivity extends Activity {
         }
     }
 
+    public void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_toolbar);
+        if (null != toolbar) {
+            toolbar.setTitle(R.string.title_activity_list);
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavUtils.navigateUpFromSameTask(ParkingActivity.this);
+                }
+            });
+        }
+        setSupportActionBar(toolbar);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

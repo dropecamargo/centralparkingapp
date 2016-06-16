@@ -16,6 +16,11 @@ public class Parking {
     private int capacity;
     private int availability;
     private String schedule;
+    private String rates;
+    private String agreement;
+    private String monthly;
+    private String email;
+
     private Double latitude;
     private Double longitude;
 
@@ -83,6 +88,38 @@ public class Parking {
         this.schedule = schedule;
     }
 
+    public String getRates() {
+        return rates;
+    }
+
+    public void setRates(String rates) {
+        this.rates = rates;
+    }
+
+    public String getAgreement() {
+        return agreement;
+    }
+
+    public void setAgreement(String agreement) {
+        this.agreement = agreement;
+    }
+
+    public String getMonthly() {
+        return monthly;
+    }
+
+    public void setMonthly(String monthly) {
+        this.monthly = monthly;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Double getLatitude() {
         return latitude;
     }
@@ -110,6 +147,10 @@ public class Parking {
             jsonObject.put("schedule", getSchedule());
             jsonObject.put("capacity", getCapacity());
             jsonObject.put("availability", getAvailability());
+            jsonObject.put("rates", getRates());
+            jsonObject.put("agreement", getAgreement());
+            jsonObject.put("monthly", getMonthly());
+            jsonObject.put("email", getEmail());
             jsonObject.put("latitude", getLatitude());
             jsonObject.put("longitude", getLongitude());
         } catch (JSONException e) { }

@@ -25,6 +25,7 @@ import com.koiti.centralparking.models.Parking;
 import com.koiti.centralparking.rest.ParkingController;
 import com.koiti.centralparking.utils.ConstantsUtils;
 import com.koiti.centralparking.utils.ParkingProgressDialog;
+import com.koiti.centralparking.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get LocationManager object from System Service LOCATION_SERVICE
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -61,13 +62,16 @@ public class MapsActivity extends FragmentActivity {
             // Get Current Location
             Criteria criteria = new Criteria();
             String provider = locationManager.getBestProvider(criteria, true);
-            Location currentLocation = locationManager.getLastKnownLocation(provider);
-
-            if (currentLocation != null) {
+            if(provider!=null && !provider.equals("")) {
+                Location currentLocation = locationManager.getLastKnownLocation(provider);
+                if (currentLocation != null) {
+                    // Show the current location in Google Map
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())));
+                }
+            }else{
                 // Show the current location in Google Map
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude())));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(ConstantsUtils.BOGOTA_LATITUDE, ConstantsUtils.BOGOTA_LONGITUDE)));
             }
-
             // Zoom in the Google Map
             mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
 

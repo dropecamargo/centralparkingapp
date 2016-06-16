@@ -75,7 +75,7 @@ public class GalleryDetailFragment extends Fragment {
 
         // Loading images into our ImageView asynchronously
         mImageFetcher = new ImageFetcher(getActivity());
-        mImageFetcher.setLoadingImage(R.drawable.aeropuerto);
+        mImageFetcher.setLoadingImage(R.drawable.melbourne_central);
         mImageFetcher.addImageCache(getActivity().getSupportFragmentManager(), cacheParams);
 
         setHasOptionsMenu(true);

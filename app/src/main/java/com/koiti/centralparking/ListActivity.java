@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,32 +25,58 @@ import com.koiti.centralparking.utils.ParkingProgressDialog;
 import java.util.ArrayList;
 
 
-public class ListActivity extends Activity {
+public class ListActivity extends ActionBarActivity {
 
-    private ListView listView;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        setToolbar();
 
-        listView = (ListView) findViewById(R.id.list_parking);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Parking parking = (Parking) listView.getItemAtPosition(position);
-                Intent intent = new Intent(ListActivity.this, ParkingActivity.class);
-                intent.putExtra("PARKING", parking.toJSON());
-                startActivity(intent);
-            }
-        });
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(new ParkingAdapter(parkings, R.layout.row_list_parking));
+
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.scrollToPosition(0);
+        recyclerView.setLayoutManager(layoutManager);
+
+//        listView = (ListView) findViewById(R.id.list_parking);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Parking parking = (Parking) listView.getItemAtPosition(position);
+//                Intent intent = new Intent(ListActivity.this, ParkingActivity.class);
+//                intent.putExtra("PARKING", parking.toJSON());
+//                startActivity(intent);
+//            }
+//        });
 
         // call AsynTask to perform network operation on separate thread
         new parkingSearchTask().execute();
     }
 
+    public void setToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_toolbar);
+        if (null != toolbar) {
+            toolbar.setTitle(R.string.title_activity_list);
+            toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NavUtils.navigateUpFromSameTask(ListActivity.this);
+                }
+            });
+        }
+        setSupportActionBar(toolbar);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,8 +99,8 @@ public class ListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateListView(ArrayList<Parking> tweets){
-        listView.setAdapter(new ParkingAdapter(ListActivity.this, R.layout.row_list_parking, tweets));
+    private void updateListView(ArrayList<Parking> parkings){
+        recyclerView.setAdapter(new ParkingAdapter(ListActivity.this, parkings, R.layout.row_list_parking));
     }
 
     private class parkingSearchTask extends AsyncTask<Object, Void, ArrayList<Parking>> {
